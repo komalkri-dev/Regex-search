@@ -16,10 +16,10 @@ So you cannot two optional parameter together.
 -------------------------------------------------------------------------------------------
 copy the regex_script.py, optional_argument.py and the files to search regular expression in same folder.
 Then run,
-python <regex_script.py> -f <file> -r <regular expression>
+python regex_script.py -f [file] -r [regular expression]
 In case of multiple files, run:
-python <regex_script.py> -f <file1> <file2> <file3> <filen> -r <regular expression>
+python regex_script.py -f [file1] [file2] [file3] [filen] -r [regular expression]
 
 #### With optional parameter:
-python <regex_script.py> -f <file1> <file2> <file3> <filen> -r <regular expression> -c
+python regex_script.py -f [file1] [file2] -r [regular expression] -c
 #################################################################################################
