@@ -8,7 +8,7 @@ optional parameters:
                      format: file_name:no_line:start_pos:matched_text
 
 #### Note:
-These are mutually exclusive paramters:
+These are mutually exclusive paramters.
 So you cannot two optional parameter together.
 #################################################################################################
 
@@ -16,8 +16,11 @@ So you cannot two optional parameter together.
 -------------------------------------------------------------------------------------------
 copy the regex_script.py, optional_argument.py and the files to search regular expression in same folder.
 Then run,
+
 python regex_script.py -f [file] -r [regular expression]
-In case of multiple files, run:
+
+In case of multiple files, run
+
 python regex_script.py -f [file1] [file2] [file3] [filen] -r [regular expression]
 
 #### With optional parameter:
