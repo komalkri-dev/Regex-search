@@ -17,12 +17,14 @@ class OptionalArgument:
 
     def printline(self):
         """
+        Print line function
         If given regular expression matches to any string then it prints the line, line number and file name.
         """
         print(f"{self.line}  ||  line number: {self.line_num}  ||  file name: {self.file} ")
 
     def underscore_option(self, start, end):
         """
+        This function implements underscore option.
         If you give underscore option(-u, --underscore), then it prints '^' under the matching text
         """
         self.printline()
@@ -35,6 +37,7 @@ class OptionalArgument:
 
     def color_option(self, matched_string): 
         """
+        This function implements color option.
         If you give color option(-c, --color), then it highlight matching text 
         """
         replaced_line = self.line.replace(matched_string, colored(matched_string, "white", "on_blue"))
@@ -42,8 +45,10 @@ class OptionalArgument:
 
 
     def machine_option(self,start, matched_string):
-        """ If you give machine option(-m, --machine) then output will generate machine-readable output in
-                  format: file_name:no_line:start_pos:matched_text
+        """
+        This function implemens machine option. 
+        If you give machine option(-m, --machine) then output will generate machine-readable output in
+        format: file_name:no_line:start_pos:matched_text
         """
         print(f"{self.file}:{self.line_num}:{start}:{matched_string}")
 

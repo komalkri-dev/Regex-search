@@ -11,13 +11,14 @@ from optional_argument import OptionalArgument
 from termcolor import colored
 
 def argument_parser():
+    """This function handles positional as well as optional parameters for this script"""
     parser = argparse.ArgumentParser(description="This script searches for lines matching regular \
                                                     expression -r (--regex) in file/s -f (--files)\
                                                     with some optional arguments", add_help=True)
                                                     
     parser.add_argument('-f','--files', nargs='*', type=argparse.FileType('r'),
                         help='name of the file(s) to search a string matches with -r regular expression')
-    parser.add_argument('-r','--regex', help='the regular expressio to match.')
+    parser.add_argument('-r','--regex', help='the regular expression to match.')
 
     exclusive_grp = parser.add_mutually_exclusive_group()
     exclusive_grp.add_argument('-u', '--underscore', action='store_true', help='prints "^" under the matching text.')
@@ -28,9 +29,17 @@ def argument_parser():
 
 if __name__ == "__main__":
     args = argument_parser().parse_args()
-    if not (args.files and args.regex):
+    if args.files is not None and args.regex is None:
+        print(colored("Please give input to -r argument. \n-f and -r both are mandatory argumnets", "white", "on_red"))
+        print(argument_parser().parse_args(['-h']))
+    elif args.files is None and args.regex is not None:
+        print(colored("Please give input to -f argument also for file.\n-f and -r both are mandatory argumnets", "white", "on_red"))
+        print(argument_parser().parse_args(['-h']))
+    elif not (args.files and args.regex):
         print(colored("-f and -r arguments are mandatory to input file and regular expression", "white", "on_red"))
         print(argument_parser().parse_args(['-h']))
+    
+    """Handling optional parameter"""
     for file in args.files:
         for i, line in enumerate(file):
             matches = re.finditer(args.regex, line)
@@ -45,5 +54,7 @@ if __name__ == "__main__":
                         option.machine_option(match.start(),match.group())
                     else:
                         option.printline()
-                  
+
+                
+
 
